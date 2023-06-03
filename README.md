@@ -6,7 +6,7 @@ This objective of this workshop is to demostrate the following:
 2.  Create a database and collection via MongoDB Compass or Atlas UI
 3.  Import documents into the collection via MongoDB Compass
 4.  Enable sharding for the databases that we want to shard
-5.  Create an index on the shard key (if the sharded collection has data or is not empty)
+5.  Create an index on the shard key via MongoDB Compass, Atlas UI or mongosh (if the sharded collection has data or is not empty)
 6.  Shard the collection that we want to shard
 7.  Show sharding status via sh.status()
 8.  Show shard distribution via db.collection.getShardDistribution()
@@ -29,7 +29,7 @@ This objective of this workshop is to demostrate the following:
 
 ### 3 - Import documents into the collection via MongoDB Compass
 1.  Look and follow my steps on the screen.
-2.  Please use the json file that I have prepare for you and import the file into the collection.
+2.  Please use the json file that I have prepared for you and import the file into the collection.
 
 ### 4 - Enable sharding for the databases that we want to shard
 1.  Look and follow my steps on the screen.
@@ -38,7 +38,7 @@ This objective of this workshop is to demostrate the following:
 sh.enableSharding("LXDB")
 ```
 
-### 5 - Create an index on the shard key (if the sharded collection has data or is not empty)
+### 5 - Create an index on the shard key via MongoDB Compass, Atlas UI or mongosh (if the sharded collection has data or is not empty)
 1.  Look and follow my steps on the screen.
 2.  Use the following commands:
 ```
