@@ -84,6 +84,9 @@ db.adminCommand({
   key: { "sku" : "hashed" }
 })
 ```
+2.  Since there is a change of the shard key, the new hashed index for field "sku" would automatically be created.  Please see the following screenshot as an example:
+
+![pic](pics/resharding-hashedindex-1.png)
 
 ### 10 - **(OPTIONAL)** Monitoring the re-sharding operation using the $currentOp pipeline stage
 1.  Launch another command shell, login to Atlas sharded cluster via mongosh and then use the following commands:
