@@ -93,7 +93,9 @@ db.getSiblingDB("admin").aggregate([
   }
 ])
 ```
+2.  Using this command, you would be able to see the details of the re-sharding process of the sharded collection, more importantly, the `totalOperationTimeElapsedSecs` and `remainingOperationTimeEstimatedSecs`.  Please see the following pic as an example:
 
+![pic](pics/monitoring-resharding-1.png)
 
 ### 11 - **(OPTIONAL)** Finishing the re-sharding operation
 
