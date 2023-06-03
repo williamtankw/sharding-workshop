@@ -75,7 +75,7 @@ db.products.getShardDistribution()
 ```
 db.adminCommand({
   reshardCollection: "LXDB.products",
-  { "sku" : "hashed" }
+  key: { "sku" : "hashed" }
 })
 ```
 
