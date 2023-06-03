@@ -25,7 +25,7 @@ This objective of this workshop is to demostrate the following:
 ## Steps
 
 ### 1 - Create a MongoDB sharded cluster in MongoDB Atlas (from a M10 replica set to a 2-shard M30 sharded cluster)
-1.  Look and follow my steps on the screen.
+1.  Look and follow my steps on the screen so that you could create your own Atlas sharded cluster in the Atlas environment that I have provided you.
 
 ### 2 - Create a database and collection via MongoDB Compass or Atlas UI
 1.  database name = LXDB
@@ -59,7 +59,7 @@ sh.shardCollection( "LXDB.products", { "sku":1 })
 ```
 sh.status()
 ```
-2.  Under `collections` section, you could see the shard key used, the number of chunks in each shard, the range of the min and max of each chunk for the sharded collection.  Please see the following pic as an example:
+2.  Under `collections` section, you could see the shard key used, the number of chunks in each shard, the range of the min and max of each chunk for the sharded collection.  Please see the following screenshot as an example:
 
 ![pic](pics/sh-status-1.png)
 
@@ -68,7 +68,7 @@ sh.status()
 ```
 db.products.getShardDistribution()
 ```
-2.  Using this command, you could see further into the shards on top of what `sh.status()` could provide.  You could see the estimated data per chunk, the estimated docs per chunk under each shard.  You could also see the percentage(%) of data and docs, and average object size on the shards.  Please see the following pic as an example:
+2.  Using this command, you could see further into the shards on top of what `sh.status()` could provide.  You could see the estimated data per chunk, the estimated docs per chunk under each shard.  You could also see the percentage(%) of data and docs, and average object size on the shards.  Please see the following screenshot as an example:
 
 ![pic](pics/getShardDistribution-1.png)
 
@@ -81,7 +81,7 @@ db.adminCommand({
 })
 ```
 
-### 10 - **(OPTIONAL)** Monitoring the re-sharding operation using the `$currentOp` pipeline stage
+### 10 - **(OPTIONAL)** Monitoring the re-sharding operation using the $currentOp pipeline stage
 1.  Launch another command shell, login to Atlas sharded cluster via mongosh and then use the following commands:
 ```
 db.getSiblingDB("admin").aggregate([
@@ -94,31 +94,32 @@ db.getSiblingDB("admin").aggregate([
   }
 ])
 ```
-2.  Using this command, you would be able to see the details of the re-sharding process of the sharded collection, more importantly, the `totalOperationTimeElapsedSecs` and `remainingOperationTimeEstimatedSecs`.  Please see the following pic as an example:
+2.  This will take some time but all cloning and re-balancing of data between the shards under the new shard key is fully automated and app connectivity continues non-disruptively.  Using this command, you would be able to see the details of the re-sharding process of the sharded collection, more importantly, the `totalOperationTimeElapsedSecs` and `remainingOperationTimeEstimatedSecs`.  Please see the following screenshot as an example:
 
 ![pic](pics/monitoring-resharding-1.png)
 
-### 11 - **(OPTIONAL)** Show sharding status via `sh.status()` and compare the difference to the one before
+### 11 - **(OPTIONAL)** Show sharding status via sh.status() and compare the difference to the one before
 1.  Use the following commands:
 ```
 sh.status()
 ```
-2.  You should see the difference in the number of chunks in each shard, the min and max of each chunk etc.  Please see the following pic as an example:
+2.  You should see the difference in the number of chunks in each shard, the min and max of each chunk etc.  Please see the following screenshot as an example:
 
 ![pic](pics/sh-status-2.png)
 
-### 12 - **(OPTIONAL)** Show shard distribution via `db.collection.getShardDistribution()` and compare the difference to the one before
+### 12 - **(OPTIONAL)** Show shard distribution via db.collection.getShardDistribution() and compare the difference to the one before
 1.  Use the following commands:
 ```
 db.products.getShardDistribution()
 ```
-2.  Using this command, you could see further into the shards on top of what `sh.status()` could provide.  You could see the estimated data per chunk, the estimated docs per chunk under each shard.  You could also see the percentage(%) of data and docs, and average object size on the shards.  Please see the following pic as an example:
+2.  Using this command, beside the same amount of details that you could get, you could also see that the percentage(%) of data and docs in the shards are more evenly distributed now that we are using hashed index/sharding.  Please see the following screenshot as an example:
 
 ![pic](pics/getShardDistribution-2.png)
 
 ### 13 - **(OPTIONAL)** Finishing the re-sharding operation
+1.  Once the re-sharding is successfully completed, you could see the following screenshot.  Even for a collection with 8 million (small) documents, the time taken to complete re-sharding due to the change of shard key it takes is pretty impressive ;). 
 
-
+![pic](pics/finish-resharding-1.png)
 
 
 
