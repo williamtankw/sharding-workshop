@@ -17,7 +17,7 @@ This objective of this workshop is to demostrate the following:
 13.  **(OPTIONAL)** Finishing the re-sharding operation
 
 ## Pre-requisites and Notes
-1.  Install mongosh and MongoDB Compass.  Minimally install mongosh.
+1.  Install mongosh and MongoDB Compass.  **Minimally install mongosh.**
     - [Download and install mongosh](https://www.mongodb.com/try/download/shell) OR 
     - Install mongosh via `brew`
         - install Homebrew by running `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
@@ -84,7 +84,7 @@ db.adminCommand({
   key: { "sku" : "hashed" }
 })
 ```
-2.  Since there is a change of the shard key, the new hashed index for field "sku" would automatically be created.  Please see the following screenshot as an example:
+2.  Since there is a change of the shard key, the new hashed index for field "sku" would also be automatically created.  Please see the following screenshot as an example:
 
 ![pic](pics/resharding-hashedindex-1.png)
 
