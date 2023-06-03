@@ -36,7 +36,8 @@ sh.enableSharding("LXDB")
 ```
 
 ### 5 - Create an index on the shard key via MongoDB Compass, Atlas UI or mongosh (if the sharded collection has data or is not empty)
-1.  Use the following commands:
+1.  This is trying to simulate range sharding.  Based on the collection, you might get an unbalanced shard distribution.
+2.  Use the following commands:
 ```
 use LXDB
 db.products.createIndex({ “sku”:1 })
