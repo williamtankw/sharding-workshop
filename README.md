@@ -1,4 +1,4 @@
-# sharding-workshop
+# MongoDB Atlas Sharding Workshop
 
 ## Introduction
 This objective of this workshop is to demostrate the following:
