@@ -35,14 +35,14 @@ This objective of this workshop is to demostrate the following:
 1.  Look and follow my steps on the screen.
 2.  Use the following commands:
 ```
-use LXDB
-sh.enableSharding("products")
+sh.enableSharding("LXDB")
 ```
 
 ### 5 - Create an index on the shard key (if the sharded collection has data or is not empty)
 1.  Look and follow my steps on the screen.
 2.  Use the following commands:
 ```
+use LXDB
 db.products.createIndex({ “sku”:1 })
 ```
 
