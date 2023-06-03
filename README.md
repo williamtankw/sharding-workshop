@@ -24,7 +24,12 @@ This objective of this workshop is to demostrate the following:
         - run `brew install mongosh` in command line 
     - [Download and install MongoDB Compass](https://www.mongodb.com/try/download/compass)
 2.  Download this [zip file](https://drive.google.com/file/d/1k63K3BOCm5zunyeyq-oADJdzbDHtCQze/view?usp=sharing) that contains the json documents required in this lab.
-3.  At the time of compiling this lab, MongoDB Atlas version 6.0.6 is used.
+3.  Useful URLs
+    - [Create, View, Drop, and Shard Collections](https://www.mongodb.com/docs/atlas/atlas-ui/collections/)
+    - [Reshard a Collection](https://www.mongodb.com/docs/manual/core/sharding-reshard-a-collection/)
+    - sh.status() [manual](https://www.mongodb.com/docs/manual/reference/method/sh.status/)
+    - db.collection.getShardDistribution() [manual](https://www.mongodb.com/docs/manual/reference/method/db.collection.getShardDistribution/)
+5.  At the time of compiling this lab, MongoDB Atlas version 6.0.6 is used.
 
 ## Steps
 
