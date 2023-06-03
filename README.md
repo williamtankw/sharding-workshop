@@ -63,6 +63,11 @@ sh.status()
 ```
 db.products.getShardDistribution()
 ```
+2.  Using this command, you could see further into the shards on top of what `sh.status()` could provide.  You could see the estimated data per chunk, the estimated docs per chunk under each shard.  You could also see the percentage(%) of data and docs, and average object size on the shards.  Please the following pic as an example:
+
+![pic](pics/getShardDistribution-1.png)
+
+
 
 
 
