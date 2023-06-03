@@ -54,6 +54,8 @@ sh.shardCollection( "LXDB.products", { "sku":1 })
 ```
 sh.status()
 ```
+2.  Under `collections` section, you could see the shard key used, the number of chunks in each shard, the range of the min and max of each chunk for the sharded collection.
+![pic](pics/sh-status-1.png)
 
 ### 8 - Show shard distribution via db.collection.getShardDistribution()
 1.  Use the following commands:
