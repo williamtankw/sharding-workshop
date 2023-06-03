@@ -13,7 +13,7 @@ This objective of this workshop is to demostrate the following:
 
 ## Pre-requisites
 1.  Install MongoDB Compass and mongosh (MongoDB shell).  Minimally install MongoDB Compass.
-    - [Download and install MongoDB Compass]([url](https://www.mongodb.com/try/download/compass))
+    - [Download and install MongoDB Compass](https://www.mongodb.com/try/download/compass)
 
 
 
