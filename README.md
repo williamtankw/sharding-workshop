@@ -46,7 +46,7 @@ sh.enableSharding("LXDB")
 2.  Use the following commands:
 ```
 use LXDB
-db.products.createIndex({ “sku”:1 })
+db.products.createIndex( { "sku": 1 } )
 ```
 
 ### 6 - Shard the collection that we want to shard
