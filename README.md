@@ -11,3 +11,10 @@ This objective of this workshop is to demostrate the following:
 7.  Show sharding status via sh.status()
 8.  Show shard distribution via db.collection.getShardDistribution()
 
+## Pre-requisites
+1.  Install MongoDB Compass and mongosh (MongoDB shell).  Minimally install MongoDB Compass.
+    - [Download and install] (https://www.mongodb.com/try/download/shell)
+
+
+
+
