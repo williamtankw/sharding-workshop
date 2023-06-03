@@ -8,14 +8,17 @@ This objective of this workshop is to demostrate the following:
 4.  Enable sharding for the databases that we want to shard
 5.  Create an index on the shard key via MongoDB Compass, Atlas UI or mongosh (if the sharded collection has data or is not empty)
 6.  Shard the collection that we want to shard
-7.  Show sharding status via sh.status()
-8.  Show shard distribution via db.collection.getShardDistribution()
+7.  Show sharding status via `sh.status()`
+8.  Show shard distribution via `db.collection.getShardDistribution()`
+9.  **(OPTIONAL)** Live re-sharding to a new shard key (in this case the hashed index of the same field as the new shard key)
+10.  **(OPTIONAL)** Monitoring the re-sharding operation using the `$currentOp` pipeline stage
+11.  **(OPTIONAL)** Finishing the re-sharding operation
 
-## Pre-requisites
+## Pre-requisites and Notes
 1.  Install MongoDB Compass and mongosh (MongoDB shell).  Minimally install MongoDB Compass.
     - [Download and install MongoDB Compass](https://www.mongodb.com/try/download/compass)
     - [Download and install mongosh](https://www.mongodb.com/try/download/shell)
-
+2.  At the time of compiling this lab, MongoDB Atlas version 6.0.6 is used.
 
 ## Steps
 
@@ -63,10 +66,36 @@ sh.status()
 ```
 db.products.getShardDistribution()
 ```
-2.  Using this command, you could see further into the shards on top of what `sh.status()` could provide.  You could see the estimated data per chunk, the estimated docs per chunk under each shard.  You could also see the percentage(%) of data and docs, and average object size on the shards.  Please the following pic as an example:
+2.  Using this command, you could see further into the shards on top of what `sh.status()` could provide.  You could see the estimated data per chunk, the estimated docs per chunk under each shard.  You could also see the percentage(%) of data and docs, and average object size on the shards.  Please see the following pic as an example:
 
 ![pic](pics/getShardDistribution-1.png)
 
+### 9 - **(OPTIONAL)** Live re-sharding to a new shard key (in this case the hashed index of the same field as the new shard key)
+1.  Use the following commands:
+```
+db.adminCommand({
+  reshardCollection: "LXDB.products",
+  { "sku" : "hashed" }
+})
+```
+
+
+### 10 - **(OPTIONAL)** Monitoring the re-sharding operation using the `$currentOp` pipeline stage
+1.  Launch another command shell, login to Atlas sharded cluster via mongosh and then use the following commands:
+```
+db.getSiblingDB("admin").aggregate([
+  { $currentOp: { allUsers: true, localOps: false } },
+  {
+    $match: {
+      type: "op",
+      "originatingCommand.reshardCollection": "LXDB.products"
+    }
+  }
+])
+```
+
+
+### 11 - **(OPTIONAL)** Finishing the re-sharding operation
 
 
 
