@@ -12,7 +12,9 @@ This objective of this workshop is to demostrate the following:
 8.  Show shard distribution via `db.collection.getShardDistribution()`
 9.  **(OPTIONAL)** Live re-sharding to a new shard key (in this case the hashed index of the same field as the new shard key)
 10.  **(OPTIONAL)** Monitoring the re-sharding operation using the `$currentOp` pipeline stage
-11.  **(OPTIONAL)** Finishing the re-sharding operation
+11.  **(OPTIONAL)** Show sharding status via `sh.status()` and compare the difference to the one before
+12.  **(OPTIONAL)** Show shard distribution via `db.collection.getShardDistribution()` and compare the difference to the one before
+13.  **(OPTIONAL)** Finishing the re-sharding operation
 
 ## Pre-requisites and Notes
 1.  Install MongoDB Compass and mongosh (MongoDB shell).  Minimally install MongoDB Compass.
@@ -79,7 +81,6 @@ db.adminCommand({
 })
 ```
 
-
 ### 10 - **(OPTIONAL)** Monitoring the re-sharding operation using the `$currentOp` pipeline stage
 1.  Launch another command shell, login to Atlas sharded cluster via mongosh and then use the following commands:
 ```
@@ -97,7 +98,26 @@ db.getSiblingDB("admin").aggregate([
 
 ![pic](pics/monitoring-resharding-1.png)
 
-### 11 - **(OPTIONAL)** Finishing the re-sharding operation
+### 11 - **(OPTIONAL)** Show sharding status via `sh.status()` and compare the difference to the one before
+1.  Use the following commands:
+```
+sh.status()
+```
+2.  You should see the difference in the number of chunks in each shard, the min and max of each chunk etc.  Please see the following pic as an example:
+
+![pic](pics/sh-status-2.png)
+
+### 12 - **(OPTIONAL)** Show shard distribution via `db.collection.getShardDistribution()` and compare the difference to the one before
+1.  Use the following commands:
+```
+db.products.getShardDistribution()
+```
+2.  Using this command, you could see further into the shards on top of what `sh.status()` could provide.  You could see the estimated data per chunk, the estimated docs per chunk under each shard.  You could also see the percentage(%) of data and docs, and average object size on the shards.  Please see the following pic as an example:
+
+![pic](pics/getShardDistribution-2.png)
+
+### 13 - **(OPTIONAL)** Finishing the re-sharding operation
+
 
 
 
